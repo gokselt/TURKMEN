@@ -1,0 +1,79 @@
+{
+  "theme": "light",
+  "archetype": "Organic & Earthy",
+  "archetype_reasoning": "Diet, health, and wellness apps require an approachable, calming, and trustworthy vibe. We are avoiding the dark 'bro-fitness' aesthetic in favor of a premium, grounded feel.",
+  "typography": {
+    "heading_font": "Outfit",
+    "body_font": "Manrope",
+    "banned_fonts": ["Inter", "Roboto", "Open Sans", "Syne"],
+    "scales": {
+      "h1": "text-4xl tracking-tighter leading-tight font-light",
+      "h2": "text-3xl tracking-tight leading-snug font-medium",
+      "h3": "text-2xl tracking-tight font-medium",
+      "body": "text-base leading-relaxed tracking-normal",
+      "label": "text-xs uppercase tracking-[0.2em] font-bold"
+    }
+  },
+  "colors": {
+    "background": "#FAFAF7",
+    "surface": "#FFFFFF",
+    "surface_alt": "#F3EFE9",
+    "primary_accent": "#D97352",
+    "secondary_accent": "#8B9A80",
+    "text_primary": "#2A3226",
+    "text_secondary": "#6B7068",
+    "border": "#E5E0D8"
+  },
+  "spacing_and_layout": {
+    "general": "Mobile-first approach. Use p-6 or p-8 for containers. The app feels premium by letting elements breathe.",
+    "dashboard_grid": "Horizontal swipeable card carousels for primary data (macros), and vertical 'story-like' feeds for daily logged meals.",
+    "borders_and_radii": "Use rounded-2xl or rounded-3xl for cards. Nested elements use rounded-xl. Never use fully sharp corners in this earthy theme."
+  },
+  "visual_enhancers": {
+    "shadows": "Diffuse, soft shadows. e.g., shadow-[0_8px_32px_rgba(42,50,38,0.06)]",
+    "surfaces": "Use the 'Clay & Crisp' Neumorphism pattern for widgets. Flat surface with a 1px border (#E5E0D8) and soft ambient shadow.",
+    "camera_scanner": "For the food/menu scanner, implement 'The Tracing Beam' overlay. A glowing border frame with blur-md behind it to guide the user's camera.",
+    "glassmorphism": "Only use for the bottom tab bar and sticky headers. Heavy blur (backdrop-blur-xl) with a white/70% tint and 1px top border (#E5E0D8)."
+  },
+  "components": {
+    "buttons": "Large touch targets (min h-14). Solid primary accent color (#D97352) with text-white, or soft surface_alt with text_primary.",
+    "inputs": "Shadcn-style but adapted for Native. Soft backgrounds (#F3EFE9) instead of outline borders. Focus state adds 1px primary border.",
+    "cards": "Cardless approach where possible, or extremely subtle cards. Use spacing and typography for hierarchy."
+  },
+  "image_urls": [
+    {
+      "url": "https://images.unsplash.com/photo-1762631935060-642a9e33ddba?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1ODF8MHwxfHNlYXJjaHwxfHxoZWFsdGh5JTIwZnJlc2glMjBmb29kJTIwc2FsYWQlMjBvcmdhbmljfGVufDB8fHx8MTc3NjA5ODU0OHww&ixlib=rb-4.1.0&q=85",
+      "category": "onboarding_background",
+      "description": "Vibrant organic salad, premium lifestyle. Use as header/background for onboarding flow to inspire healthy eating."
+    },
+    {
+      "url": "https://images.unsplash.com/photo-1758721218560-aec50748d450?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1ODF8MHwxfHNlYXJjaHwzfHxoZWFsdGh5JTIwZnJlc2glMjBmb29kJTIwc2FsYWQlMjBvcmdhbmljfGVufDB8fHx8MTc3NjA5ODU0OHww&ixlib=rb-4.1.0&q=85",
+      "category": "dashboard_meal_card",
+      "description": "Fresh salad in a bowl on a wooden table. Use as placeholder for AI-scanned meals or diet plan headers."
+    },
+    {
+      "url": "https://images.pexels.com/photos/17965451/pexels-photo-17965451.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "category": "workplace_menu_feature",
+      "description": "Buffet/cafeteria food. Use for the 'Scan Workplace Menu' feature card."
+    },
+    {
+      "url": "https://images.unsplash.com/photo-1671580704901-98cedb46e06b?crop=entropy&cs=srgb&fm=jpg&ixid=M3w8NjAzMzJ8MHwxfHNlYXJjaHwzfHxneW0lMjB5b2dhJTIwbWF0fGVufDB8fHx8MTc3NjA5ODU1Mnww&ixlib=rb-4.1.0&q=85",
+      "category": "exercise_card",
+      "description": "Fitness focus. Use as thumbnail for daily exercise suggestions."
+    }
+  ],
+  "motion_and_interactions": {
+    "page_transitions": "Smooth slide-ins for onboarding. Spring physics for dashboard cards.",
+    "feedback": "Haptic feedback on every logged meal or successful menu scan.",
+    "gamification": "Confetti or particle effects when a user hits daily macro goals or unlocks a motivational surprise."
+  },
+  "instructions_to_main_agent": [
+    "Load 'Outfit' and 'Manrope' fonts using expo-font. Do not use Inter or default system sans.",
+    "Ensure the UI uses NativeWind (Tailwind for React Native) keeping the classes defined in 'scales'.",
+    "Build an intuitive bottom tab navigator: Dashboard, Diet Plan, Camera (Scanner), Exercise, Profile.",
+    "The Onboarding flow must be a gamified quiz (3-4 screens) asking for height, weight, age, activity level, and goals, before landing on the dashboard.",
+    "Implement the Camera Scanner view with a 'Tracing Beam' UI overlay. Add a toggle for 'Scan Plate' vs 'Scan Menu'.",
+    "Dashboard should feature swipeable macro cards and a vertical feed for daily meals.",
+    "Include 'data-testid' on all interactive elements."
+  ]
+}
