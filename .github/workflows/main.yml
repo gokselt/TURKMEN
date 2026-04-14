@@ -1,9 +1,7 @@
-name: Android APK Uretici
+name: React Native / Expo APK Uretici
 
 on:
-  push:
-    branches: [ "main", "master" ]
-  workflow_dispatch: # Bu sayede istediğiniz zaman manuel olarak da tetikleyebilirsiniz
+  workflow_dispatch: # Sadece manuel tetikleme ile çalışsın
 
 jobs:
   build:
@@ -13,20 +11,31 @@ jobs:
     - name: 1. Kodlari Sunucuya Cek
       uses: actions/checkout@v4
 
-    - name: 2. Java Ortamini Kur
+    - name: 2. Node.js Kurulumu (JavaScript icin)
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+
+    - name: 3. Java Kurulumu (Android icin)
       uses: actions/setup-java@v4
       with:
-        java-version: '17' # Android icin en kararli surumlerden biri
+        java-version: '17'
         distribution: 'temurin'
 
-    - name: 3. Gradle Izinlerini Ayarla
-      run: chmod +x gradlew
+    - name: 4. Kutuphaneleri Yukle (Frontend Klasorunde)
+      working-directory: ./frontend
+      run: npm install
 
-    - name: 4. APK'yi Derle
+    - name: 5. Android Altyapisini Olustur (Prebuild)
+      working-directory: ./frontend
+      run: npx expo prebuild --platform android
+
+    - name: 6. APK'yi Derle
+      working-directory: ./frontend/android
       run: ./gradlew assembleDebug
 
-    - name: 5. APK Dosyasini İndirilebilir Hale Getir
+    - name: 7. APK Dosyasini İndirilebilir Hale Getir
       uses: actions/upload-artifact@v4
       with:
         name: Uygulama-APK-Dosyasi
-        path: app/build/outputs/apk/debug/app-debug.apk
+        path: frontend/android/app/build/outputs/apk/debug/app-debug.apk
