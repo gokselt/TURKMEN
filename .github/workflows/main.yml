@@ -1,7 +1,7 @@
 name: React Native / Expo APK Uretici
 
 on:
-  workflow_dispatch: # Sadece manuel tetikleme ile çalışsın
+  workflow_dispatch:
 
 jobs:
   build:
@@ -25,6 +25,12 @@ jobs:
     - name: 4. Kutuphaneleri Yukle (Frontend Klasorunde)
       working-directory: ./frontend
       run: npm install
+
+    - name: 4.5. Eksik Splash Gorselini Tamamla (Hata Cozumu)
+      working-directory: ./frontend
+      run: |
+        mkdir -p assets/images
+        echo "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" | base64 -d > assets/images/splash-icon.png
 
     - name: 5. Android Altyapisini Olustur (Prebuild)
       working-directory: ./frontend
